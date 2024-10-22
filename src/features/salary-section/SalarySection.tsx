@@ -1,7 +1,7 @@
 import { Card, Stack, Typography } from '@mui/material';
 import { SalaryForm } from './components/SalaryForm';
 
-export const SalarySelection = () => {
+export const SalarySection = () => {
   return (
     <Card>
       <Stack gap={2}>

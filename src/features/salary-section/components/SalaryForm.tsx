@@ -1,23 +1,71 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { MenuItem, OutlinedInput, Stack, TextField } from '@mui/material';
+import {
+  CircularProgress,
+  MenuItem,
+  OutlinedInput,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { useContext, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { supportedYears } from '../../../constants/years';
+import { TaxContext } from '../../../context/TaxContext';
+import { getTaxBrackets } from '../../../services/queries';
 import { schema, type FormData } from './FormSchema';
 
-const supportedYears = ['2019', '2020', '2021', '2022'] as const;
-
 export const SalaryForm = () => {
+  const [enabledQuery, setEnabledQuery] = useState(false);
+  const { setData } = useContext(TaxContext);
   const {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<FormData>({
     defaultValues: { salary: 0, year: supportedYears[0] },
     resolver: yupResolver(schema),
     mode: 'onBlur',
   });
-  const onSubmit = (data: FormData) => console.log('form data : ', data);
+  const { isError, isLoading, isFetching, data, isSuccess } = useQuery({
+    queryKey: ['taxBrackets', getValues().year],
+    queryFn: () => getTaxBrackets(getValues().year),
+    enabled: enabledQuery,
+  });
 
-  console.log('errors : ', errors);
+  useEffect(() => {
+    if (isError) {
+      setEnabledQuery(false);
+    }
+  }, [isError]);
+
+  useEffect(() => {
+    const taxBrackets = data?.tax_brackets;
+    if (isSuccess && taxBrackets) {
+      setData({
+        type: 'SET_TAX_BRACKETS',
+        data: {
+          taxBrackets,
+        },
+      });
+
+      setEnabledQuery(false);
+    }
+  }, [isSuccess, data, setData]);
+
+  const onSubmit = (data: FormData) => {
+    console.log('form data : ', data);
+
+    setData({
+      type: 'SET_SALARY',
+      data: {
+        salary: data.salary,
+      },
+    });
+
+    setEnabledQuery(true);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +124,18 @@ export const SalaryForm = () => {
           rules={{ required: true }}
         />
       </Stack>
-      <OutlinedInput sx={{ width: '100%' }} value="Calculate taxes" type="submit" />
+      <OutlinedInput
+        endAdornment={isLoading || isFetching ? <CircularProgress /> : null}
+        disabled={isLoading || isFetching}
+        sx={{ width: '100%' }}
+        value="Calculate taxes"
+        type="submit"
+      />
+      {isError ? (
+        <Typography color="error" variant="caption" sx={{ marginTop: '0.5rem' }}>
+          Something went wrong, please try again!
+        </Typography>
+      ) : null}
     </form>
   );
 };

@@ -1,5 +1,6 @@
 import { TaxBracket } from '../../../types/TaxBracket';
-import { getTaxesOwed } from '../../../utils/tax';
+import { getCurrencyFormat } from '../../../utils/money';
+import { getTaxesByBracket } from '../../../utils/tax';
 
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 
@@ -12,6 +13,8 @@ export const BracketCard = ({ bracket, salary }: { bracket: TaxBracket; salary: 
       : bracket.max
         ? `Between ${bracket.min} and ${bracket.max}`
         : `Above ${bracket.min}`;
+
+  const taxesOwed = getCurrencyFormat(getTaxesByBracket({ salary, bracket }));
 
   return (
     <Card sx={{ padding: 2 }}>
@@ -26,7 +29,7 @@ export const BracketCard = ({ bracket, salary }: { bracket: TaxBracket; salary: 
           Rate: <b>{rate}%</b>
         </Typography>
         <Typography>
-          Taxes owed: <b>{getTaxesOwed({ salary, bracket })}</b>
+          Taxes owed: <b>{taxesOwed}</b>
         </Typography>
       </CardContent>
     </Card>
