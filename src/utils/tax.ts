@@ -51,5 +51,5 @@ export const getEffectiveTaxRate = ({
 
   const totalTaxesOwed = getTotalTaxesOwed({ salary, taxBrackets });
 
-  return (totalTaxesOwed / salary) * 100;
+  return ((totalTaxesOwed / salary) * 100).toFixed(2);
 };

@@ -11,7 +11,7 @@ type Action = {
   data: Partial<Data>;
 };
 
-type TaxContextValue = {
+export type TaxContextValue = {
   data: Data;
   setData: (action: Action) => void;
 };
