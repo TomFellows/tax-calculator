@@ -83,6 +83,7 @@ export const SalaryForm = () => {
             <TextField
               label="Salary"
               {...field}
+              type="number"
               error={Boolean(errors.salary)}
               helperText={errors.salary?.message}
               onChange={(event) => {
