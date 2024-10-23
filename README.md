@@ -23,6 +23,7 @@ npm run dev
 
 ## Roadmap
 
+- Add error capture with Sentry
 - Component library with Storybook
 - Visual Testing with Storybook
 - Expanded testing (responsiveness, styling)
