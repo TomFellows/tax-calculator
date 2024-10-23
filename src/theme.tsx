@@ -6,7 +6,7 @@ import {
   selectClasses,
   SvgIconProps,
 } from '@mui/material';
-import { green, orange, red, yellow } from '@mui/material/colors';
+import { green, red } from '@mui/material/colors';
 import { forwardRef } from 'react';
 
 // Theming has been supplied by an MUI template
@@ -42,17 +42,8 @@ export const theme = createTheme({
     primary: {
       main: '#556cd6',
     },
-    secondary: {
-      main: '#19857b',
-    },
     error: {
       main: red.A400,
-    },
-    success: {
-      main: green.A400,
-    },
-    warning: {
-      main: yellow.A400,
     },
   },
   components: {
@@ -68,7 +59,7 @@ export const theme = createTheme({
             padding: 16,
             gap: 16,
             transition: 'all 100ms ease',
-            backgroundColor: gray[50],
+            backgroundColor: green[50],
             borderRadius: (theme.vars || theme).shape.borderRadius,
             border: `1px solid ${(theme.vars || theme).palette.divider}`,
             boxShadow: 'none',
@@ -103,13 +94,6 @@ export const theme = createTheme({
       },
     },
     MuiCardHeader: {
-      styleOverrides: {
-        root: {
-          padding: 0,
-        },
-      },
-    },
-    MuiCardActions: {
       styleOverrides: {
         root: {
           padding: 0,
@@ -431,23 +415,6 @@ export const theme = createTheme({
         root: ({ theme }) => ({
           typography: theme.typography.caption,
           marginBottom: 8,
-        }),
-      },
-    },
-    MuiAlert: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          borderRadius: 10,
-          backgroundColor: orange[100],
-          color: (theme.vars || theme).palette.text.primary,
-          border: `1px solid ${alpha(orange[300], 0.5)}`,
-          '& .MuiAlert-icon': {
-            color: orange[500],
-          },
-          ...theme.applyStyles('dark', {
-            backgroundColor: `${alpha(orange[900], 0.5)}`,
-            border: `1px solid ${alpha(orange[800], 0.5)}`,
-          }),
         }),
       },
     },
