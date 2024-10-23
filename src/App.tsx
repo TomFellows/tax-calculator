@@ -12,7 +12,6 @@ export const App = () => {
       display="flex"
       sx={{
         padding: 6,
-        //backgroundColor: '#242424'
       }}
       gap={2}
     >

@@ -71,7 +71,7 @@ describe('Tax utils', () => {
       const salary = 0;
       const taxBrackets = generateTaxBrackets();
 
-      expect(getEffectiveTaxRate({ salary, taxBrackets })).toBe(0.0);
+      expect(getEffectiveTaxRate({ salary, taxBrackets })).toBe('0.00');
     });
 
     it('should return the effective tax rate for a salary and tax brackets', () => {

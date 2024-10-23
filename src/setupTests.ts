@@ -6,4 +6,7 @@ beforeAll(() => server.listen());
 
 afterAll(() => server.close());
 
-afterEach(() => server.resetHandlers());
+afterEach(() => {
+  server.resetHandlers();
+  vi.resetAllMocks();
+});

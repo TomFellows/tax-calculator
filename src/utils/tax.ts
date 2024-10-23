@@ -46,7 +46,7 @@ export const getEffectiveTaxRate = ({
   taxBrackets: TaxBracket[];
 }) => {
   if (salary === 0) {
-    return 0;
+    return (0).toFixed(2);
   }
 
   const totalTaxesOwed = getTotalTaxesOwed({ salary, taxBrackets });

@@ -42,7 +42,7 @@ export const SalaryForm = () => {
 
   useEffect(() => {
     const taxBrackets = data?.tax_brackets;
-    if (isSuccess && taxBrackets) {
+    if (isSuccess && taxBrackets && taxBrackets.length > 0) {
       setData({
         type: 'SET_TAX_BRACKETS',
         data: {
@@ -55,8 +55,6 @@ export const SalaryForm = () => {
   }, [isSuccess, data, setData]);
 
   const onSubmit = (data: FormData) => {
-    console.log('form data : ', data);
-
     setData({
       type: 'SET_SALARY',
       data: {

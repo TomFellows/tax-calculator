@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { TaxContext } from '../../context/TaxContext';
 import { BracketCard } from './components/BracketCard';
 
+export const TAX_BRACKETS_SECTION_TEST_ID = 'tax-brackets-section';
+
 export const TaxBrackets = () => {
   const {
     data: { salary, taxBrackets },
@@ -11,7 +13,7 @@ export const TaxBrackets = () => {
   return (
     <>
       {taxBrackets.length > 0 ? (
-        <Card>
+        <Card data-testid={TAX_BRACKETS_SECTION_TEST_ID}>
           <Stack gap={2}>
             <Typography variant="h5">Taxes owed by tax bracket</Typography>
             <Stack

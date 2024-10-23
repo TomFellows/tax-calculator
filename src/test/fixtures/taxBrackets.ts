@@ -14,7 +14,7 @@ export const generateTaxBrackets = () => {
   const secondBracket = generateTaxBracket({ min: 45000, max: 90000 });
   const thirdBracket = generateTaxBracket({ min: 90000, max: 140000 });
   const fourthBracket = generateTaxBracket({ min: 140000, max: 200000 });
-  const fifthBracket = generateTaxBracket({ min: 200000 });
+  const fifthBracket = generateTaxBracket({ min: 200000, max: undefined });
 
   return [firstBracket, secondBracket, thirdBracket, fourthBracket, fifthBracket];
 };

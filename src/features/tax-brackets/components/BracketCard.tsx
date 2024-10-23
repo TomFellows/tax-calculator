@@ -1,8 +1,9 @@
+import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { TaxBracket } from '../../../types/TaxBracket';
 import { getCurrencyFormat } from '../../../utils/money';
 import { getTaxesByBracket } from '../../../utils/tax';
 
-import { Card, CardContent, CardHeader, Typography } from '@mui/material';
+export const BRACKET_CARD_TEST_ID = 'bracket-card';
 
 export const BracketCard = ({ bracket, salary }: { bracket: TaxBracket; salary: number }) => {
   let rate = Number(bracket.rate * 100).toFixed(2);
@@ -17,7 +18,7 @@ export const BracketCard = ({ bracket, salary }: { bracket: TaxBracket; salary: 
   const taxesOwed = getCurrencyFormat(getTaxesByBracket({ salary, bracket }));
 
   return (
-    <Card sx={{ padding: 2 }}>
+    <Card data-testid={BRACKET_CARD_TEST_ID} sx={{ padding: 2 }}>
       <CardHeader
         title={bracketTitle}
         titleTypographyProps={{
