@@ -3,12 +3,12 @@ import { setupComponent } from '../../test/helpers/testUtils';
 import { getCurrencyFormat } from '../../utils/money';
 import { getTaxesByBracket } from '../../utils/tax';
 import { BRACKET_CARD_TEST_ID } from './components/BracketCard';
-import { TaxBrackets } from './TaxBrackets';
+import { TaxBracketsSection } from './TaxBracketsSection';
 
 describe('Tax Brackets Section', () => {
   it('should display nothing if there are no stored tax brackets', () => {
     const { container } = setupComponent({
-      Component: <TaxBrackets />,
+      Component: <TaxBracketsSection />,
       initialData: { taxBrackets: [] },
     });
 
@@ -20,7 +20,7 @@ describe('Tax Brackets Section', () => {
       const {
         container,
         data: { taxBrackets },
-      } = setupComponent({ Component: <TaxBrackets /> });
+      } = setupComponent({ Component: <TaxBracketsSection /> });
 
       const bracketCards = screen.getAllByTestId(BRACKET_CARD_TEST_ID);
 
@@ -42,7 +42,7 @@ describe('Tax Brackets Section', () => {
     it('should display the correct information per tax bracket', () => {
       const {
         data: { taxBrackets, salary },
-      } = setupComponent({ Component: <TaxBrackets /> });
+      } = setupComponent({ Component: <TaxBracketsSection /> });
 
       const bracketCards = screen.getAllByTestId(BRACKET_CARD_TEST_ID);
 

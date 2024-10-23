@@ -3,12 +3,12 @@ import { generateTaxBrackets } from '../../test/fixtures/taxBrackets';
 import { setupComponent } from '../../test/helpers/testUtils';
 import { getCurrencyFormat } from '../../utils/money';
 import { getEffectiveTaxRate, getTotalTaxesOwed } from '../../utils/tax';
-import { Results } from './Results';
+import { ResultsSection } from './ResultsSection';
 
 describe('Results Section', () => {
   it('should display the expected static text', () => {
     const { container } = setupComponent({
-      Component: <Results />,
+      Component: <ResultsSection />,
       initialData: { taxBrackets: [] },
     });
 
@@ -25,7 +25,7 @@ describe('Results Section', () => {
       salary: faker.number.int({ min: 50000, max: 200000 }),
       taxBrackets: generateTaxBrackets(),
     };
-    const { container } = setupComponent({ Component: <Results />, initialData: data });
+    const { container } = setupComponent({ Component: <ResultsSection />, initialData: data });
 
     const effectiveRate = getEffectiveTaxRate(data);
     const totalTaxes = getCurrencyFormat(getTotalTaxesOwed(data));

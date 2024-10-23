@@ -6,7 +6,7 @@ import { getEffectiveTaxRate, getTotalTaxesOwed } from '../../utils/tax';
 
 export const RESULTS_SECTION_TEST_ID = 'results-section';
 
-export const Results = () => {
+export const ResultsSection = () => {
   const {
     data: { salary, taxBrackets },
   } = useContext(TaxContext);

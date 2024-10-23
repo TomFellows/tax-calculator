@@ -1,8 +1,8 @@
 import { Divider, Stack } from '@mui/material';
 import { TaxContextProvider } from './context/TaxContext';
-import { Results } from './features/results/Results';
+import { ResultsSection } from './features/results/ResultsSection';
 import { SalarySection } from './features/salary-section/SalarySection';
-import { TaxBrackets } from './features/tax-brackets/TaxBrackets';
+import { TaxBracketsSection } from './features/tax-brackets/TaxBracketsSection';
 
 export const App = () => {
   return (
@@ -19,10 +19,10 @@ export const App = () => {
       <TaxContextProvider>
         <Stack gap={2} direction={{ xs: 'column', md: 'row' }} width="100%">
           <SalarySection />
-          <Results />
+          <ResultsSection />
         </Stack>
         <Divider />
-        <TaxBrackets />
+        <TaxBracketsSection />
       </TaxContextProvider>
     </Stack>
   );

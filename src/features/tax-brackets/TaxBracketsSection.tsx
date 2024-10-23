@@ -5,7 +5,7 @@ import { BracketCard } from './components/BracketCard';
 
 export const TAX_BRACKETS_SECTION_TEST_ID = 'tax-brackets-section';
 
-export const TaxBrackets = () => {
+export const TaxBracketsSection = () => {
   const {
     data: { salary, taxBrackets },
   } = useContext(TaxContext);
