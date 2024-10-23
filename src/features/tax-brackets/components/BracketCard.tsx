@@ -6,7 +6,7 @@ import { getTaxesByBracket } from '../../../utils/tax';
 export const BRACKET_CARD_TEST_ID = 'bracket-card';
 
 export const BracketCard = ({ bracket, salary }: { bracket: TaxBracket; salary: number }) => {
-  let rate = Number(bracket.rate * 100).toFixed(2);
+  const rate = Number(bracket.rate * 100).toFixed(2);
 
   const bracketTitle =
     bracket.min === 0

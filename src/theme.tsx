@@ -118,9 +118,9 @@ export const theme = createTheme({
     },
     MuiSelect: {
       defaultProps: {
-        IconComponent: forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
-          <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
-        )),
+        IconComponent: forwardRef<SVGSVGElement, SvgIconProps>(function IconComponent(props, ref) {
+          return <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />;
+        }),
       },
       styleOverrides: {
         root: ({ theme }) => ({

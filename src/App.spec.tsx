@@ -30,7 +30,7 @@ describe('App', () => {
 
     expect(salarySection).toBeInTheDocument();
     expect(resultsSection).toBeInTheDocument();
-    expect(taxBracketsSection).not.toBeInTheDocument;
+    expect(taxBracketsSection).not.toBeInTheDocument();
     expect(divider).toBeInTheDocument();
   });
 
@@ -43,7 +43,7 @@ describe('App', () => {
 
     expect(salarySection).toBeInTheDocument();
     expect(resultsSection).toBeInTheDocument();
-    expect(taxBracketsSection).not.toBeInTheDocument;
+    expect(taxBracketsSection).not.toBeInTheDocument();
 
     // Fill out the form
     const salaryInput = screen.getByRole('textbox');
